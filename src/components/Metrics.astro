@@ -1,0 +1,57 @@
+---
+const stats = [
+  { value: 100, suffix: '+', label: 'Pipelines Built' },
+  { value: 10,  suffix: '+', label: 'Years Experience' },
+  { value: 15,  suffix: '+', label: 'AWS Services' },
+  { value: 99,  suffix: '%', label: 'QA Pass Rate' },
+];
+---
+
+<section class="py-16 border-b border-slate-800"
+  style="background: linear-gradient(180deg, #0f172a 0%, #0c1a2e 100%);">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {stats.map(({ value, suffix, label }, i) => (
+        <div class={`text-center anim anim-delay-${i + 1}`}>
+          <div class="text-4xl md:text-5xl font-extrabold text-sky-400 mb-2">
+            <span class="counter" data-target={value}>0</span>{suffix}
+          </div>
+          <p class="text-slate-400 text-sm">{label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function animateCounter(el: HTMLElement) {
+    const target = parseInt(el.dataset.target ?? '0', 10);
+    const duration = 1500;
+    const start = performance.now();
+
+    function step(now: number) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      el.textContent = Math.floor(eased * target).toString();
+      if (progress < 1) requestAnimationFrame(step);
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  const counterEls = document.querySelectorAll<HTMLElement>('.counter');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target as HTMLElement);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  counterEls.forEach((el) => observer.observe(el));
+</script>
