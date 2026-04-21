@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Nav from '../components/Nav.astro';
 
 interface Props {
   title: string;
@@ -16,6 +17,23 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
   </head>
   <body class="bg-slate-900 text-slate-50 antialiased">
+    <Nav />
     <slot />
+    <script>
+      // Scroll fade-in animations
+      const animEls = document.querySelectorAll('.anim');
+      const animObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              animObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      animEls.forEach((el) => animObserver.observe(el));
+    </script>
   </body>
 </html>

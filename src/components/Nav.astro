@@ -1,0 +1,52 @@
+---
+const links = [
+  { label: 'About',      href: '#about' },
+  { label: 'Stack',      href: '#stack' },
+  { label: 'Projects',   href: '#projects' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Contact',    href: '#contact' },
+];
+---
+
+<nav id="nav" class="fixed top-0 inset-x-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800 transition-all">
+  <div class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="#hero" class="font-mono text-sky-400 font-bold tracking-tight hover:text-sky-300 transition-colors">
+      gc<span class="text-slate-500">.</span>dev
+    </a>
+    <ul class="hidden md:flex gap-6">
+      {links.map(({ label, href }) => (
+        <li>
+          <a
+            href={href}
+            class="nav-link text-sm text-slate-400 hover:text-slate-100 transition-colors"
+            data-section={href.replace('#', '')}
+          >
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-link');
+  const sections = document.querySelectorAll<HTMLElement>('section[id]');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => {
+            const active = link.dataset.section === entry.target.id;
+            link.classList.toggle('text-sky-400', active);
+            link.classList.toggle('text-slate-400', !active);
+          });
+        }
+      });
+    },
+    { rootMargin: '-40% 0px -55% 0px' }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+</script>
