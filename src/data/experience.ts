@@ -15,7 +15,7 @@ export const experience: ExperienceEntry[] = [
     bullets: [
       'Built and maintained 100+ data pipelines across AWS EMR, ECS Fargate, Athena, Glue, and Apache Airflow',
       'Modernised geospatial pipelines with Apache Sedona and PySpark, significantly reducing processing times',
-      'Architected cloud infrastructure with Terraform; managed Docker deployments on ECS Fargate',
+      'Supported architecture of cloud infrastructure using Terraform; managed Docker deployments on ECS Fargate',
     ],
   },
   {
