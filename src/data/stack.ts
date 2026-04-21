@@ -15,13 +15,13 @@ export const stack: StackCategory[] = [
     color: 'orange',
     tools: [
       'S3', 'EMR', 'ECS Fargate', 'Lambda', 'Step Functions',
-      'Athena', 'Glue', 'RDS', 'CloudFront', 'API Gateway', 'Cognito',
+      'Athena', 'Glue', 'RDS',
     ],
   },
   {
     name: 'Orchestration',
     color: 'fuchsia',
-    tools: ['Apache Airflow'],
+    tools: ['Apache Airflow', 'Jupyter Notebook'],
   },
   {
     name: 'Geospatial',
@@ -39,11 +39,11 @@ export const stack: StackCategory[] = [
   {
     name: 'IaC / DevOps',
     color: 'fuchsia',
-    tools: ['Terraform', 'Docker', 'GitHub Actions', 'ECR'],
+    tools: ['Docker', 'GitHub Actions', 'ECR', 'Bash'],
   },
   {
-    name: 'Backend',
+    name: 'APIs & Tooling',
     color: 'sky',
-    tools: ['Node.js', 'TypeScript', 'FastAPI', 'Express'],
+    tools: ['REST APIs', 'FastAPI', 'TypeScript', 'Postman', 'JSON', 'OpenAPI'],
   },
 ];
