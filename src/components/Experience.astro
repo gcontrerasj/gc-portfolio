@@ -1,0 +1,48 @@
+---
+import { experience } from '../data/experience';
+---
+
+<section id="experience" class="py-24 border-b border-slate-800">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="font-mono text-sky-400 text-sm tracking-widest uppercase mb-2 anim">
+      Experience
+    </h2>
+    <p class="text-slate-400 mb-12 anim anim-delay-1">10+ years across GIS, data engineering, and cloud infrastructure.</p>
+
+    <div class="relative">
+      <!-- Timeline vertical line -->
+      <div class="absolute left-2.5 top-2 bottom-0 w-px bg-slate-700"></div>
+
+      <div class="flex flex-col gap-10">
+        {experience.map(({ role, company, period, current, bullets }, i) => (
+          <div class={`pl-10 relative anim anim-delay-${Math.min(i + 1, 6)}`}>
+            <!-- Timeline dot -->
+            <div class={`absolute left-0 top-1.5 w-5 h-5 rounded-full border-2 flex items-center justify-center
+              ${current
+                ? 'bg-sky-400 border-sky-400'
+                : 'bg-slate-900 border-slate-600'}`}>
+            </div>
+
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-2 gap-1">
+              <h3 class={`font-semibold ${current ? 'text-slate-100' : 'text-slate-300'}`}>
+                {role}
+              </h3>
+              <span class={`text-sm font-mono ${current ? 'text-sky-400' : 'text-slate-500'}`}>
+                {period}
+              </span>
+            </div>
+            <p class="text-slate-400 text-sm mb-3">{company}</p>
+            <ul class="flex flex-col gap-1.5">
+              {bullets.map((bullet) => (
+                <li class="text-slate-400 text-sm flex gap-2">
+                  <span class="text-slate-600 mt-1 flex-shrink-0">›</span>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
