@@ -8,7 +8,7 @@ export const stack: StackCategory[] = [
   {
     name: 'Data Processing',
     color: 'sky',
-    tools: ['Python', 'pandas', 'polars', 'PySpark', 'DuckDB', 'PyArrow'],
+    tools: ['Python', 'pandas', 'polars', 'PySpark', 'PyArrow'],
   },
   {
     name: 'Cloud / AWS',
@@ -21,7 +21,7 @@ export const stack: StackCategory[] = [
   {
     name: 'Orchestration',
     color: 'fuchsia',
-    tools: ['Apache Airflow', 'AWS Step Functions'],
+    tools: ['Apache Airflow'],
   },
   {
     name: 'Geospatial',
